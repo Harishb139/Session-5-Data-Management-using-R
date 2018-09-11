@@ -1,0 +1,60 @@
+Session 5 – Data Management using R
+Assignment – 2
+
+1.
+> vec1 = c(rownames(mtcars[1:15,]))
+> vec2 = c(rownames(mtcars[10:32,]))
+> vec12<-union(vec1, vec2)
+> vec12
+ [1] "Mazda RX4"           "Mazda RX4 Wag"       "Datsun 710"          "Hornet 4 Drive"      "Hornet Sportabout"   "Valiant"            
+ [7] "Duster 360"          "Merc 240D"           "Merc 230"            "Merc 280"            "Merc 280C"           "Merc 450SE"         
+[13] "Merc 450SL"          "Merc 450SLC"         "Cadillac Fleetwood"  "Lincoln Continental" "Chrysler Imperial"   "Fiat 128"           
+[19] "Honda Civic"         "Toyota Corolla"      "Toyota Corona"       "Dodge Challenger"    "AMC Javelin"         "Camaro Z28"         
+[25] "Pontiac Firebird"    "Fiat X1-9"           "Porsche 914-2"       "Lotus Europa"        "Ford Pantera L"      "Ferrari Dino"       
+[31] "Maserati Bora"       "Volvo 142E"         
+> 
+2.
+> vec1 = c(rownames(mtcars[1:15,]))
+> vec2 = c(rownames(mtcars[10:32,]))
+> commonvec12<-vec1%in%vec2
+> vec1[commonvec12]
+[1] "Merc 280"           "Merc 280C"          "Merc 450SE"         "Merc 450SL"         "Merc 450SLC"        "Cadillac Fleetwood"
+> intersect(vec1,vec2)
+[1] "Merc 280"           "Merc 280C"          "Merc 450SE"         "Merc 450SL"         "Merc 450SLC"        "Cadillac Fleetwood"
+> 
+3.
+> vec1 = c(rownames(mtcars[1:15,]))
+> vec2 = c(rownames(mtcars[10:32,]))
+> vec1[!vec1%in%vec2]
+[1] "Mazda RX4"         "Mazda RX4 Wag"     "Datsun 710"        "Hornet 4 Drive"    "Hornet Sportabout" "Valiant"          
+[7] "Duster 360"        "Merc 240D"         "Merc 230"         
+> vec2[!vec2%in%vec1]
+ [1] "Lincoln Continental" "Chrysler Imperial"   "Fiat 128"            "Honda Civic"         "Toyota Corolla"      "Toyota Corona"      
+ [7] "Dodge Challenger"    "AMC Javelin"         "Camaro Z28"          "Pontiac Firebird"    "Fiat X1-9"           "Porsche 914-2"      
+[13] "Lotus Europa"        "Ford Pantera L"      "Ferrari Dino"        "Maserati Bora"       "Volvo 142E"         
+> union(vec1[!vec1%in%vec2],vec2[!vec2%in%vec1])
+ [1] "Mazda RX4"           "Mazda RX4 Wag"       "Datsun 710"          "Hornet 4 Drive"      "Hornet Sportabout"   "Valiant"            
+ [7] "Duster 360"          "Merc 240D"           "Merc 230"            "Lincoln Continental" "Chrysler Imperial"   "Fiat 128"           
+[13] "Honda Civic"         "Toyota Corolla"      "Toyota Corona"       "Dodge Challenger"    "AMC Javelin"         "Camaro Z28"         
+[19] "Pontiac Firebird"    "Fiat X1-9"           "Porsche 914-2"       "Lotus Europa"        "Ford Pantera L"      "Ferrari Dino"       
+[25] "Maserati Bora"       "Volvo 142E"         
+> setdiff(vec1, vec2)
+[1] "Mazda RX4"         "Mazda RX4 Wag"     "Datsun 710"        "Hornet 4 Drive"    "Hornet Sportabout" "Valiant"          
+[7] "Duster 360"        "Merc 240D"         "Merc 230"         
+> setdiff(vec2,vec1)
+ [1] "Lincoln Continental" "Chrysler Imperial"   "Fiat 128"            "Honda Civic"         "Toyota Corolla"      "Toyota Corona"      
+ [7] "Dodge Challenger"    "AMC Javelin"         "Camaro Z28"          "Pontiac Firebird"    "Fiat X1-9"           "Porsche 914-2"      
+[13] "Lotus Europa"        "Ford Pantera L"      "Ferrari Dino"        "Maserati Bora"       "Volvo 142E"         
+> 
+4.
+> vec1 = c(rownames(mtcars[1:15,]))
+> vec2 = c(rownames(mtcars[11:25,]))
+> is.element(vec1,vec2)
+ [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+> identical(vec1,vec2)
+[1] FALSE
+> setequal(vec1,vec2)
+[1] FALSE
+> vec1 %in% vec2
+ [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+> 
